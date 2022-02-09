@@ -1,5 +1,5 @@
 // Function for change on dropdown menu
-function dropdownChange(selectedID){
+function optionChanged(selectedID){
     console.log(selectedID);
     // Read the json file
     d3.json("data/samples.json").then((data) => {
