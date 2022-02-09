@@ -30,24 +30,23 @@ function optionChanged(selectedID){
     const idSample = data.samples.filter(item => parseInt(item.id) == selectedID); 
     
     // Slice top 10 sample values
-    let sampleValue = idSample[0].sample_values.slice(0,10);
-    sampleValue= sampleValue.reverse();
-    let otuID = idSample[0].otu_ids.slice(0,10);
-    otuID = otuID.reverse();
-    let otuLabels = idSample[0].otu_labels
-    otuLabels = otuLabels.reverse();
+    let sample_values = idSample[0].sample_values.slice(0,10);
+    sample_values= sample_values.reverse();
+    let otu_ids = idSample[0].otu_ids.slice(0,10);
+    otu_ids = otu_ids.reverse();
+    let otu_labels = idSample[0].otu_labels
+    otu_labels = otu_labels.reverse();
  
     // Y axis of bar chart
-    const yAxis = otuID.map(item => 'OTU' + " " + item);
-       // console.log(yAxis);
+    const yAxis = otu_ids.map(item => 'OTU' + " " + item);
     
-    // Define the layout and trace object, edit color and orientation
+    // layout and trace object, edit color and orientation
        const trace = {
        y: yAxis,
-       x: sampleValue,
+       x: sample_values,
        type: 'bar',
        orientation: "h",
-       text:  otuLabels,
+       text:  otu_labels,
        marker: {
           color: 'rgb(154, 140, 152)',
           line: {
@@ -56,7 +55,7 @@ function optionChanged(selectedID){
         }
        },
        layout = {
-       title: 'Top 10 Operational Taxonomic Units (OTU)/Individual',
+       title: 'Top 10 (OTU)/Individual',
        xaxis: {title: 'Number of Samples Collected'},
        yaxis: {title: 'OTU ID'}
        };
