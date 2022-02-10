@@ -2,7 +2,7 @@
 d3.json("samples.json").then(data => console.log(data))
 
 // give dropdown function
-function init() {
+function optionChanged() {
     let dropdownMenu = d3.select("#selDataset");
 
 // read in json file
@@ -41,21 +41,20 @@ function barChart (otuData){
                  //array was created in order to plot bar chart
                  let data1 = [trace1];
                  let layout = {
-                     title: "The Top 10 Operational Taxonomic Units",
-                    height: 600,
-                     width: 900,    
+                     title: "Top 10 OTU's",
+                    height: 500,
+                     width: 800,    
                  };
                  Plotly.newPlot("bar", data1, layout);
          });
      };
-//create bubble graph
+//BUBBLE CHART
 function bubbleChart (otuData){
     d3.json('samples.json').then((data)=>{
         let otusamplesID = data.samples;
         let otuArray = otusamplesID.filter(object => object.id == otuData
     );
         let otuResult = otuArray[0];
-        // console.log(otuResult); to check
 //rename variables
         let otu_ids = otuResult.otu_ids;
         let otu_labels = otuResult.otu_labels;
@@ -76,10 +75,10 @@ function bubbleChart (otuData){
                  let data2 = [trace2];
                  console.log(otu_ids);
                  let layout2 = {
-                     title: "All Operational Taxonomic Units",
+                     title: "All OTU",
                      xaxis: {title: "OTU ID"},
-                     height: 600,
-                     width: 1500,    
+                     height: 500,
+                     width: 1300,    
                  };
                  Plotly.newPlot("bubble", data2, layout2);
          });
@@ -107,4 +106,4 @@ function optionChanged(dataID) {
     bubbleChart(dataID);
     metaData(dataID);
 };
-init();
+optionChanged();
