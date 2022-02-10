@@ -10,7 +10,7 @@ function optionChanged() {
         let sampleID = data.names;
         sampleID.forEach(sample => {dropdownMenu.append("option").text(sample).property("value", sample)
      });
- // give dropdown menu values
+ // gives dropdown menu values
      let dataID = dropdownMenu.property("value");
      console.log(dataID);
      barChart(dataID);
@@ -38,14 +38,13 @@ function barChart (otuData){
             type: "bar",
             orientation: "h"
                  };
-                 //array was created in order to plot bar chart
-                 let data1 = [barData];
+                 let barArray = [barData];
                  let layout = {
                     title: "Top 10 OTU's",
                     height: 500,
                     width: 800,    
                  };
-                 Plotly.newPlot("bar", data1, layout);
+                 Plotly.newPlot("bar", barArray, layout);
          });
      };
 //BUBBLE CHART
@@ -71,8 +70,7 @@ function bubbleChart (otuData){
                 size: sample_values,
             }
                  };
-                 //array was created in order to plot bar chart
-                 let data2 = [bubbleData];
+                 let bubbleArray = [bubbleData];
                  console.log(otu_ids);
                  let layout2 = {
                     title: "All OTU",
@@ -80,7 +78,7 @@ function bubbleChart (otuData){
                     height: 500,
                     width: 1300,    
                  };
-                 Plotly.newPlot("bubble", data2, layout2);
+                 Plotly.newPlot("bubble", bubbleArray, layout2);
          });
      };
 // show information
