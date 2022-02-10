@@ -30,20 +30,20 @@ function barChart (otuData){
         let otu_labels = otuResult.otu_labels;
         let sample_values = otuResult.sample_values;
     
-// trace was created as well as slicing and reversing for the bar chart
-            let trace1 = {
-             x: sample_values.slice(0,11).reverse(),
-             y: otu_ids.slice(0,11).reverse().map(row => "OTU" + row),
+// data for the bar chart
+            let barData = {
+            x: sample_values.slice(0,11).reverse(),
+            y: otu_ids.slice(0,11).reverse().map(row => "OTU" + row),
             text: otu_labels.slice(0,11).reverse(),
             type: "bar",
             orientation: "h"
                  };
                  //array was created in order to plot bar chart
-                 let data1 = [trace1];
+                 let data1 = [barData];
                  let layout = {
-                     title: "Top 10 OTU's",
+                    title: "Top 10 OTU's",
                     height: 500,
-                     width: 800,    
+                    width: 800,    
                  };
                  Plotly.newPlot("bar", data1, layout);
          });
@@ -60,10 +60,10 @@ function bubbleChart (otuData){
         let otu_labels = otuResult.otu_labels;
         let sample_values = otuResult.sample_values;
         
-// trace and bubble chart was created
-            let trace2 = {
-             x: otu_ids,
-             y: sample_values,
+// data for bubble chart was created
+            let bubbleData = {
+            x: otu_ids,
+            y: sample_values,
             text: otu_labels,
             mode: 'markers',
             marker: {
@@ -72,13 +72,13 @@ function bubbleChart (otuData){
             }
                  };
                  //array was created in order to plot bar chart
-                 let data2 = [trace2];
+                 let data2 = [bubbleData];
                  console.log(otu_ids);
                  let layout2 = {
-                     title: "All OTU",
-                     xaxis: {title: "OTU ID"},
-                     height: 500,
-                     width: 1300,    
+                    title: "All OTU",
+                    xaxis: {title: "OTU ID"},
+                    height: 500,
+                    width: 1300,    
                  };
                  Plotly.newPlot("bubble", data2, layout2);
          });
@@ -90,10 +90,10 @@ function metaData (otuData){
         let otuArray = metaDataDemographics.filter(object => object.id == otuData
     );
         let otuResult = otuArray[0];
-        let metademo = d3.select("#sample-metadata");
-        metademo.html("");
+        let metaSamples = d3.select("#sample-metadata");
+        metaSamples.html("");
         Object.entries(otuResult).forEach(([key, value]) => {
-            metademo.append("h5").text(`${key}: ${value}`)
+            metaSamples.append("h5").text(`${key}: ${value}`)
         });
         console.log(otuResult);
     })
