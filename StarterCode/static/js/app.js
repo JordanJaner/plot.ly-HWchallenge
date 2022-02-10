@@ -1,10 +1,8 @@
 // retrieve data
 d3.json("samples.json").then(data => console.log(data))
-
 // give dropdown function
 function optionChanged() {
     let dropdownMenu = d3.select("#selDataset");
-
 // read in json file
     d3.json("samples.json").then(data => {
         let sampleID = data.names;
@@ -29,7 +27,6 @@ function barChart (otuData){
         let otu_ids = otuResult.otu_ids;
         let otu_labels = otuResult.otu_labels;
         let sample_values = otuResult.sample_values;
-    
 // data for the bar chart
             let barData = {
             x: sample_values.slice(0,11).reverse(),
@@ -58,7 +55,6 @@ function bubbleChart (otuData){
         let otu_ids = otuResult.otu_ids;
         let otu_labels = otuResult.otu_labels;
         let sample_values = otuResult.sample_values;
-        
 // data for bubble chart was created
             let bubbleData = {
             x: otu_ids,
@@ -95,13 +91,4 @@ function metaData (otuData){
         });
         console.log(otuResult);
     })
-
 };
-// display the data
-function optionChanged(dataID) {
-    console.log(dataID);
-    barChart(dataID);
-    bubbleChart(dataID);
-    metaData(dataID);
-};
-optionChanged();
