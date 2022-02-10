@@ -20,13 +20,13 @@ function optionChanged() {
 function barChart (otuData){
     d3.json('samples.json').then((data)=>{
         let otusamplesID = data.samples;
-        let otuArray = otusamplesID.filter(object => object.id == otuData
+        let arrayData = otusamplesID.filter(object => object.id == otuData
     );
-        let otuResult = otuArray[0];
+        let results = arrayData[0];
 //rename variables
-        let otu_ids = otuResult.otu_ids;
-        let otu_labels = otuResult.otu_labels;
-        let sample_values = otuResult.sample_values;
+        let otu_ids = results.otu_ids;
+        let otu_labels = results.otu_labels;
+        let sample_values = results.sample_values;
 // data for the bar chart
             let barData = {
             x: sample_values.slice(0,11).reverse(),
@@ -48,13 +48,13 @@ function barChart (otuData){
 function bubbleChart (otuData){
     d3.json('samples.json').then((data)=>{
         let otusamplesID = data.samples;
-        let otuArray = otusamplesID.filter(object => object.id == otuData
+        let arrayData = otusamplesID.filter(object => object.id == otuData
     );
-        let otuResult = otuArray[0];
+        let results = arrayData[0];
 //rename variables
-        let otu_ids = otuResult.otu_ids;
-        let otu_labels = otuResult.otu_labels;
-        let sample_values = otuResult.sample_values;
+        let otu_ids = results.otu_ids;
+        let otu_labels = results.otu_labels;
+        let sample_values = results.sample_values;
 // data for bubble chart was created
             let bubbleData = {
             x: otu_ids,
@@ -80,15 +80,15 @@ function bubbleChart (otuData){
 // show information
 function metaData (otuData){
     d3.json("samples.json").then(data =>{
-        let metaDataDemographics = data.metadata;
-        let otuArray = metaDataDemographics.filter(object => object.id == otuData
+        let dataInformation = data.metadata;
+        let arrayData = dataInformation.filter(object => object.id == otuData
     );
-        let otuResult = otuArray[0];
+        let results = arrayData[0];
         let metaSamples = d3.select("#sample-metadata");
         metaSamples.html("");
-        Object.entries(otuResult).forEach(([key, value]) => {
+        Object.entries(results).forEach(([key, value]) => {
             metaSamples.append("h5").text(`${key}: ${value}`)
         });
-        console.log(otuResult);
+        console.log(results);
     })
 };
