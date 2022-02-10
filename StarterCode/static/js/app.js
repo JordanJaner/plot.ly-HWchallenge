@@ -19,10 +19,11 @@ function init() {
     });
 };
 // BAR CHART
-function barChart (sampleotu){
+function barChart (otuData){
     d3.json('samples.json').then((data)=>{
         let otusamplesID = data.samples;
-        let otuArray = otusamplesID.filter(object => object.id == sampleotu);
+        let otuArray = otusamplesID.filter(object => object.id == otuData
+    );
         let otuResult = otuArray[0];
 //rename variables
         let otu_ids = otuResult.otu_ids;
@@ -48,10 +49,11 @@ function barChart (sampleotu){
          });
      };
 //create bubble graph
-function bubbleChart (sampleotu){
+function bubbleChart (otuData){
     d3.json('samples.json').then((data)=>{
         let otusamplesID = data.samples;
-        let otuArray = otusamplesID.filter(object => object.id == sampleotu);
+        let otuArray = otusamplesID.filter(object => object.id == otuData
+    );
         let otuResult = otuArray[0];
         // console.log(otuResult); to check
 //rename variables
@@ -83,10 +85,11 @@ function bubbleChart (sampleotu){
          });
      };
 // show information
-function metaData (sampleotu){
+function metaData (otuData){
     d3.json("samples.json").then(data =>{
         let metaDataDemographics = data.metadata;
-        let otuArray = metaDataDemographics.filter(object => object.id == sampleotu);
+        let otuArray = metaDataDemographics.filter(object => object.id == otuData
+    );
         let otuResult = otuArray[0];
         let metademo = d3.select("#sample-metadata");
         metademo.html("");
