@@ -29,9 +29,9 @@ function barChart (otuData){
         let sample_values = results.sample_values;
 // data for the bar chart
             let barData = {
-            x: sample_values.slice(0,11).reverse(),
-            y: otu_ids.slice(0,11).reverse().map(row => "OTU" + row),
-            text: otu_labels.slice(0,11).reverse(),
+            x: sample_values.slice(0,10),
+            y: otu_ids.slice(0,10).map(row => "OTU" + row),
+            text: otu_labels.slice(0,10),
             type: "bar",
             orientation: "h"
                  };
