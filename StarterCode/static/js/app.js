@@ -10,7 +10,7 @@ function optionChanged() {
         let sampleID = data.names;
         sampleID.forEach(sample => {dropdownMenu.append("option").text(sample).property("value", sample)
      });
- // gives dropdown menu values
+ // gives dropdown menu values from function calls
      let dataID = dropdownMenu.property("value");
      console.log(dataID);
      barChart(dataID);
