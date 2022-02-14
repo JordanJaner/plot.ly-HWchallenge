@@ -92,3 +92,12 @@ function metaData (otuData){
         console.log(results);
     })
 };
+
+// show the data
+function optionChanged(dataID) {
+    console.log(dataID);
+    barChart(dataID);
+    bubbleChart(dataID);
+    metaData(dataID);
+};
+init();
